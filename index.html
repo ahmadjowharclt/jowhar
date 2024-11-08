@@ -29,6 +29,7 @@ header {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    justify-content: flex-end; /* Align the menu items to the right */
 }
 
 /* Hide the checkbox itself */
@@ -98,10 +99,10 @@ header {
         display: none; /* Hide toggle button on desktop */
     }
 
-    /* Horizontal menu display on desktop */
+    /* Horizontal menu display on desktop, aligned to the right */
     .menu {
         display: flex;
-        justify-content: flex-start;
+        justify-content: flex-end; /* Align the menu items to the right */
         align-items: center;
     }
     .menu li {
@@ -109,6 +110,42 @@ header {
     }
     .menu li a {
         font-size: 1rem;
+    }
+}
+
+/* Styling for the Services Section */
+#services {
+    padding: 40px 0;
+    background-color: #ffffff;
+    text-align: center;
+    color: white;
+}
+
+/* Grid Layout for Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.service-item {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: white;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    background-color: #333;
+}
+
+/* Change font color to black in services section for mobile */
+@media (max-width: 768px) {
+    .service-item {
+        color: black; /* Change font color for mobile view */
+        background-color: #f5f5f5;
     }
 }
 
