@@ -7,19 +7,111 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Times+New+Roman&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Montserrat, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-            color: white;
-        }
-        header {
-            background-color: #000000;
-            color: white;
-            padding: 0px;
-            text-align: left;
-        }
+        /* Base Styles */
+body {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: white;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 0px;
+    text-align: left;
+}
+
+/* Menu hidden by default */
+.menu {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Hide the checkbox itself */
+.toggle-checkbox {
+    display: none;
+}
+
+/* Style for mobile toggle button (hamburger icon) */
+.toggle-btn {
+    display: none; /* Hidden on desktop, shown on mobile */
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    /* Toggle button visible only on mobile */
+    .toggle-btn {
+        display: block;
+    }
+
+    /* Hide the menu by default on mobile */
+    .menu {
+        display: none;
+        width: 70%; /* Control width of the menu in mobile */
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100%;
+        background-color: #000;
+        flex-direction: column;
+        padding-top: 60px; /* Space for toggle button */
+        z-index: 9;
+    }
+
+    /* Show menu when checkbox is checked */
+    .toggle-checkbox:checked + .toggle-btn + .menu {
+        display: flex;
+    }
+
+    /* Style for links in the mobile menu */
+    .menu li {
+        display: block;
+    }
+    .menu li a {
+        display: block;
+        padding: 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        text-align: center;
+    }
+
+    .menu li a:hover {
+        color: #808080;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .toggle-btn {
+        display: none; /* Hide toggle button on desktop */
+    }
+
+    /* Horizontal menu display on desktop */
+    .menu {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .menu li {
+        margin-right: 20px;
+    }
+    .menu li a {
+        font-size: 1rem;
+    }
+}
+
         nav {
             background-color: transparent;
             padding: 10px;
@@ -382,32 +474,17 @@
 </head>
 <body>
     <header>
-    <nav id="navbar">
-        <!-- Hamburger Icon (Only visible on mobile) -->
-        <label for="menu-toggle" id="toggle-menu" class="menu-toggle">&#9776;</label>
-        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+    <nav>
+        <!-- Hidden checkbox for toggle functionality -->
+        <input type="checkbox" id="toggle-menu" class="toggle-checkbox">
         
-        <!-- Navigation Links (Visible on larger screens) -->
-        <ul id="menu" class="desktop-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li>
-                <a href="#">Services</a>
-                <ul>
-                    <li><a href="brandbon.html">Branding</a></li>
-                    <li><a href="amaze-holidays.html">Travel and Tourism</a></li>
-                    <li><a href="skill-trade.html">Manpower supply</a></li>
-                    <li><a href="ntouch-industrials.html">Manufacturing</a></li>
-                    <li><a href="amaze-pro.html">UAE PRO Services</a></li>
-                    <li><a href="import-export.html">Import/Export</a></li>
-                    <li><a href="castel-rock.html">Construction</a></li>
-                </ul>
-            </li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-        <!-- Mobile Menu (Initially Hidden) -->
-        <ul id="mobile-menu" class="hidden">
+        <!-- Label that acts as the menu button -->
+        <label for="toggle-menu" class="toggle-btn">
+            <i class="fas fa-bars"></i> <!-- Menu icon -->
+        </label>
+        
+        <!-- Menu items -->
+        <ul class="menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li>
