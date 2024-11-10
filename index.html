@@ -195,17 +195,21 @@ header {
         }
         
         /* Dropdown Styles */
-       nav ul li ul {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-nav ul li:hover ul {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            list-style-type: none;
+            padding: 10px 0;
+            min-width: 180px;
+            top: 100%;
+            z-index: 999;
+            text-align: left;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+        nav ul li:hover ul {
+            display: block;
         }
         nav ul li ul li {
             display: block;
